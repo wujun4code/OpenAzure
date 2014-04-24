@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{01F02B0A-2D21-4F5F-B77F-4C10952971C8}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>OpenAzure</RootNamespace>
+    <AssemblyName>OpenAzure</AssemblyName>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="RestSharp">
+      <HintPath>..\packages\RestSharp.104.4.0\lib\net4\RestSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Caching" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Configuration\IOpenAzureConfig.cs" />
+    <Compile Include="Configuration\IOpenAzureRESTConfig.cs" />
+    <Compile Include="Configuration\SimpleOpenAzureConfig.cs" />
+    <Compile Include="DataModel\AzureException.cs" />
+    <Compile Include="DataModel\AzureObject.cs" />
+    <Compile Include="DataModel\CloudService.cs" />
+    <Compile Include="DataModel\Const.cs" />
+    <Compile Include="DataModel\Deployment.cs" />
+    <Compile Include="DataModel\Enum.cs" />
+    <Compile Include="DataModel\Role.cs" />
+    <Compile Include="DataModel\RoleSize.cs" />
+    <Compile Include="DataModel\Subscription.cs" />
+    <Compile Include="DataModel\VirtualMachine.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="InterfaceImplementation\AzureRESTBase.cs" />
+    <Compile Include="Interface\IAzureREST.cs" />
+    <Compile Include="Interface\IGit.cs" />
+    <Compile Include="InterfaceImplementation\OpenAzureServiceInstances.cs" />
+    <Compile Include="Interface\IOpenAzure.cs" />
+    <Compile Include="InterfaceImplementation\SimpleAzureREST.cs" />
+    <Compile Include="InterfaceImplementation\SimpleOpenAzure.cs" />
+    <Compile Include="StaticInstances\OpenAzureDic.cs" />
+    <Compile Include="StaticInstances\StaticInstances.cs" />
+    <Compile Include="Utility\ModelConvertor.cs" />
+    <Compile Include="Utility\XMLTools.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
