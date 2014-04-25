@@ -1,5 +1,4 @@
-﻿using Microsoft.WindowsAzure.Management.Subscription;
-using OpenAzure.Configuration;
+﻿using OpenAzure.Configuration;
 using OpenAzure.DataModel;
 using OpenAzure.InterfaceImplementation;
 using System;
