@@ -104,8 +104,12 @@ namespace OpenAzure.InterfaceImplementation
         public virtual CloudServiceBase GetAzureCloudServiceInfo(string SubscriptionID, string CloudServiceName)
         {
             CloudServiceBase rtn = null;
+            IDictionary<string, string> ps = new Dictionary<string, string>();
+            ps.Add("embed-detail", "true");
+            var rep = ExcuteGet(ps, ConstString.Request_URI_CloudService, SubscriptionID, CloudServiceName);
 
-            var rep = ExcuteGet(ConstString.Request_URI_CloudService, SubscriptionID, CloudServiceName);
+
+
 
             return rtn;
         }
@@ -119,10 +123,19 @@ namespace OpenAzure.InterfaceImplementation
             return rep;
         }
 
-        protected virtual IRestResponse ExcuteGet(string Resource, params string[] args)
+        protected virtual IRestResponse ExcuteGet(IDictionary<string, string> Parameters, string ResourceTemplate, params string[] ResourceArgs)
         {
             var req = GetCommonReq();
-            req.Resource = string.Format(Resource, args);
+            req.Resource = string.Format(ResourceTemplate, ResourceArgs);
+            req.Method = Method.GET;
+
+            if (Parameters != null)
+            {
+                foreach (var pm in Parameters)
+                {
+                    req.AddParameter(pm.Key, pm.Value);
+                }
+            }
             var rep = Excute(req);
             return rep;
         }
