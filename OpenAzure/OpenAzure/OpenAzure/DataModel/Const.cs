@@ -11,6 +11,10 @@ namespace OpenAzure.DataModel
         public const string APIHOST_INTERNATIONAL = "https://management.core.windows.net/";
         public const string APIHOST_CHINAMAINLAND = "https://management.core.chinacloudapi.cn/";
 
+
+        public const string Request_URI_CloudService = "{0}/services/hostedservices/{1}";
+
+
         public const string API_VERSION_DATE_2014_04_01 = "2014-04-01";
         public const string API_VERSION_DATE_2014_02_01 = "2014-02-01";
         public const string API_VERSION_DATE_2014_01_01 = "2014-01-01";

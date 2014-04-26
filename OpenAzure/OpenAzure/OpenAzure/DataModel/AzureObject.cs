@@ -31,7 +31,9 @@ namespace OpenAzure.DataModel
             }
         }
 
-        public AzureType AzureType { get; set; }
+        public int VersionNumber { get; set; }
+
+        public virtual AzureType AzureType { get; set; }
 
         public virtual string GetApiAddresss(AzureType azureType)
         {
@@ -50,7 +52,7 @@ namespace OpenAzure.DataModel
 
         public abstract void Commit();
 
-        public abstract string APIVersion { get; set; }
+        public virtual string APIVersion { get; set; }
 
     }
 }

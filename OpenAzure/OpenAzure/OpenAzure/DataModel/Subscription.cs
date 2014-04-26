@@ -33,7 +33,7 @@ namespace OpenAzure.DataModel
 
        
 
-        public IEnumerable<CloudService> HostedCloudServices { get; set; }
+        public IEnumerable<CloudServiceBase> HostedCloudServices { get; set; }
 
         public override string APIVersion
         {

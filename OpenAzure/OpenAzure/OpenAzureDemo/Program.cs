@@ -17,9 +17,13 @@ namespace OpenAzureDemo
             sub.AzureType = AzureType.ChinaMainland;
             sub.SubscriptionID = "be6d343c-b79f-4a47-b7f5-bc63d725dbeb";
 
-            sub.Pull();
+            //sub.Pull();
 
-            var dd = sub.Status;
+            CloudService cloudService = new CloudService();
+            cloudService.Subscription = sub;
+            cloudService.Name = "Hugo635328362328981876";
+            cloudService.Pull();
+
 
         }
     }

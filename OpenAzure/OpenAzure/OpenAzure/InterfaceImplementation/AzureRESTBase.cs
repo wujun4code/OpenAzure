@@ -54,6 +54,9 @@ namespace OpenAzure.InterfaceImplementation
         }
         #endregion
 
+
+        #region impls
+
         public virtual SubscriptionBase GetAzureSubscriptionInfo(string SubscriptionID)
         {
             SubscriptionBase rtn = new Subscription();
@@ -98,13 +101,29 @@ namespace OpenAzure.InterfaceImplementation
 
         }
 
+        public virtual CloudServiceBase GetAzureCloudServiceInfo(string SubscriptionID, string CloudServiceName)
+        {
+            CloudServiceBase rtn = null;
+
+            var rep = ExcuteGet(ConstString.Request_URI_CloudService, SubscriptionID, CloudServiceName);
+
+            return rtn;
+        }
+
+        #endregion
         protected virtual IRestResponse GetAzureSubscriptionRep(string SubscriptionID)
         {
-            var req = new RestRequest();
-            req.AddHeader("Content-Type", "application/xml");
+            var req = GetCommonReq();
             req.Resource = SubscriptionID;
             var rep = Excute(req);
+            return rep;
+        }
 
+        protected virtual IRestResponse ExcuteGet(string Resource, params string[] args)
+        {
+            var req = GetCommonReq();
+            req.Resource = string.Format(Resource, args);
+            var rep = Excute(req);
             return rep;
         }
 
@@ -116,6 +135,15 @@ namespace OpenAzure.InterfaceImplementation
             GetError(rep);
             return rep;
 
+        }
+
+        public virtual RestRequest GetCommonReq()
+        {
+            var req = new RestRequest();
+
+            req.AddHeader("Content-Type", "application/xml");
+
+            return req;
         }
 
         public void GetError(IRestResponse rep)

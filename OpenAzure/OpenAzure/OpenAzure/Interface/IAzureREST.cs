@@ -16,5 +16,7 @@ namespace OpenAzure.Interface
         string APIVersion { get; set; }
 
         SubscriptionBase GetAzureSubscriptionInfo(string SubscriptionID);
+
+        CloudServiceBase GetAzureCloudServiceInfo(string SubscriptionID, string CloudServiceName);
     }
 }
